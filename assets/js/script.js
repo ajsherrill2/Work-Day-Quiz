@@ -25,3 +25,10 @@ function colorBlock() {
 }
 
 colorBlock();
+
+$('.saveBtn').on('click', function () {
+    let key = $(this).parent().attr('id');
+    let value = $(this).siblings('.description').val();
+
+    localStorage.setItem(key, value);
+});
