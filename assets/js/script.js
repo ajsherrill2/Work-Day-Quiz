@@ -26,9 +26,21 @@ function colorBlock() {
 
 colorBlock();
 
-$('.saveBtn').on('click', function () {
-    let key = $(this).parent().attr('id');
-    let value = $(this).siblings('.description').val();
+$(".saveBtn").on("click", function () {
+  let key = $(this).parent().attr("id");
+  let value = $(this).siblings(".description").val();
 
-    localStorage.setItem(key, value);
+  localStorage.setItem(key, value);
 });
+
+let textareaEls = $(".time-block");
+
+for (let i = 0; i < textareaEls.length; i++) {
+  const element = textareaEls[i].children[1];
+  const key = textareaEls[i].getAttribute("id");
+  let value = localStorage.getItem(key);
+  console.log(key);
+  if (value) {
+    element.append(value);
+  }
+}
