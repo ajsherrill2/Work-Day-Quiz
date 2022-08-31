@@ -2,6 +2,7 @@
 var currentDate = moment().format("MMMM Do YYYY hA");
 $("#currentDay").text(currentDate);
 
+// Changes display of textarea in each time-block depending on the time of day!
 function colorBlock() {
   var currentTime = moment().hours(); // Military time
 
@@ -9,7 +10,7 @@ function colorBlock() {
 
   for (let i = 0; i < timeBlocks.length; i++) {
     let timeBlockId = timeBlocks[i].getAttribute("id");
-    let militaryTime = parseInt(timeBlockId.replace("hour", "")) + 8;
+    let militaryTime = parseInt(timeBlockId.replace("hour", "")) + 8; // Converts time in time-block to military time
     let textareaEl = timeBlocks[i].children[1];
 
     if (militaryTime < currentTime) {
@@ -26,6 +27,7 @@ function colorBlock() {
 
 colorBlock();
 
+// Save button function, saves content in textarea to local storage
 $(".saveBtn").on("click", function () {
   let key = $(this).parent().attr("id");
   let value = $(this).siblings(".description").val();
@@ -35,6 +37,7 @@ $(".saveBtn").on("click", function () {
 
 let textareaEls = $(".time-block");
 
+// Calls previously saved messages to textareas
 for (let i = 0; i < textareaEls.length; i++) {
   const element = textareaEls[i].children[1];
   const key = textareaEls[i].getAttribute("id");
