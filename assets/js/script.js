@@ -39,7 +39,7 @@ for (let i = 0; i < textareaEls.length; i++) {
   const element = textareaEls[i].children[1];
   const key = textareaEls[i].getAttribute("id");
   let value = localStorage.getItem(key);
-  console.log(key);
+
   if (value) {
     element.append(value);
   }
